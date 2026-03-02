@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Juniper.App/Juniper.App.csproj" />
+  <Project Path="Juniper.Auth/Juniper.Auth.csproj" />
+  <Project Path="Juniper.Core/Juniper.Core.csproj" />
+  <Project Path="Juniper.Daemon/Juniper.Daemon.csproj" />
+  <Project Path="Juniper.Server/Juniper.Server.csproj" />
+  <Project Path="Juniper.Sync/Juniper.Sync.csproj" />
+</Solution>
