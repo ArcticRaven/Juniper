@@ -1,5 +1,81 @@
+﻿# Build output
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+
+# Rider
+.idea/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET secrets / local config
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# User secrets store (contains sensitive keys - never commit)
+**/secrets.json
+**/*.pfx
+**/*.p12
+**/*.mobileprovision
+**/*.keystore
+**/*.cer
+**/*.key
+
+# MAUI / iOS build artifacts
+**/*.ipa
+**/*.dSYM.zip
+**/*.dSYM
+**/Entitlements.plist
+
+# XAML generated files
+*.g.cs
+*.g.i.cs
+
+# Windows
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+
+# Logs
+*.log
+logs/
+
+# SQLite (local working copies — never commit live data)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Redis dumps
+dump.rdb
+
+# WireGuard keys (in case any config ends up near the repo)
+*.conf
+privatekey
+publickey
