@@ -1,6 +1,6 @@
 ﻿using Juniper.Core.Events.System;
 
-namespace Juniper.Core.Events.Library;
+namespace Juniper.Core.Events.Library.Lifetime;
 
 public record DegradedEvent : IEvent<DegradedPayload>
 {

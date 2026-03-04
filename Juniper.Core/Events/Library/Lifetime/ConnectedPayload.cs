@@ -1,4 +1,4 @@
-﻿namespace Juniper.Core.Events.Library;
+﻿namespace Juniper.Core.Events.Library.Lifetime;
 
 public record ConnectedPayload
 {
