@@ -2,12 +2,20 @@
 
 public interface ITagStore
 {
-    Tag? Get(Guid guid);
-    
+    Tag? Get(TagId id);
+
+    // Tag queries
     IEnumerable<Tag> SearchByName(string query);
+
+    // Category queries
     
-    Tag Create(String name, string? hexColor = null, string? category = null);
+    // todo - Fuzzy Matching~~ 
+    IEnumerable<Tag> GetByCategory(string category);
+    IEnumerable<string> GetCategories();
+
+    // meow
+    Tag Create(string name, string? hexColor = null, string? category = null);
     void Upsert(Tag tag);
-    
+
     Tag GetOrCreate(string name, string? hexColor = null, string? category = null);
 }
