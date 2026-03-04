@@ -3,7 +3,7 @@
 public interface IEvent
 {
     Guid EventId { get; }
-    DateTime Timestamp { get; }
+    DateTimeOffset Timestamp { get; }
     Guid SourceDeviceId { get; }
     string EventType { get; }
 }
