@@ -1,4 +1,5 @@
-﻿using Juniper.Core.Devices;
+﻿using Juniper.Core.Capabilities;
+using Juniper.Core.Devices;
 
 namespace Juniper.Core.Events.Library.Lifetime;
 

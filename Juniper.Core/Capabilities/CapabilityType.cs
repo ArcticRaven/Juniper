@@ -1,4 +1,5 @@
-﻿public enum CapabilityType
+﻿namespace Juniper.Core.Capabilities;
+public enum CapabilityType
 {
     // AI
     LLM,

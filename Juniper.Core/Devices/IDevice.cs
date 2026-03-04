@@ -1,4 +1,6 @@
-﻿namespace Juniper.Core.Devices;
+﻿using Juniper.Core.Capabilities;
+
+namespace Juniper.Core.Devices;
 
 public interface IDevice
 {
