@@ -35,8 +35,8 @@ public sealed record Contact
         = new Dictionary<Guid, Relationship>();
 
     // Projects, Notes, and Events
-    // public ISet<Guid> ProjectIds { get; init; } = new HashSet<Guid>();
-    // public ISet<Guid> TaskIds { get; init; } = new HashSet<Guid>();
-    // public ISet<Guid> EventIds { get; init; } = new HashSet<Guid>();
+    public ISet<Guid> ProjectIds { get; init; } = new HashSet<Guid>();
+    public ISet<Guid> TaskIds { get; init; } = new HashSet<Guid>();
+    public ISet<Guid> EventIds { get; init; } = new HashSet<Guid>();
     public IList<Note> Notes { get; init; } = new List<Note>();
 }
