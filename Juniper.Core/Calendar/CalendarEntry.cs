@@ -1,8 +1,6 @@
-﻿using Juniper.Core.Contacts;
+﻿namespace Juniper.Core.Calendar;
 
-namespace Juniper.Core.Calendar;
-
-public sealed record CalendarEvent
+public sealed record CalendarEntry
 {
     public Guid Id { get; init; }
 
