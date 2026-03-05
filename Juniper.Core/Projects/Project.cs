@@ -1,45 +1,49 @@
-﻿using Juniper.Core.Notes;
-using Juniper.Core.Tagging;
+﻿using Juniper.Core.Tagging;
 
 namespace Juniper.Core.Projects;
 
-public sealed record Project
+public sealed record Project : ITaggable
 {
-    Guid Id { get; init; }
-    Guid? ParentId { get; init; }
-    string Name { get; init; }
-    string? Description { get; init; }                              // Optional
-    ISet<TagId> Tags { get; init; } = new HashSet<TagId>();
+    public Guid Id { get; init; }
+    public Guid? ParentId { get; init; }
+    public Guid OwnerId { get; set; }
+
+    public string Name { get; init; } = "";
+    public string? Description { get; init; }
+    public ISet<string> Aliases { get; init; } = new HashSet<string>();
+
+    // Universal tags
+    public ISet<TagId> TagIds { get; init; } = new HashSet<TagId>();
     
-    ISet<string> Aliases { get; init; } = new HashSet<string>();    // Reference Names
-    
+    // Strict state + mesh visibility
     public ProjectStatus Status { get; init; } = ProjectStatus.Active;
     public ProjectVisibility Visibility { get; init; } = ProjectVisibility.Private;
+
+    // contactId -> access level 
+    public IDictionary<Guid, AccessLevel> Collaborators { get; init; }
+        = new Dictionary<Guid, AccessLevel>();
+
+    // Timestamps
+    public DateTimeOffset CreatedAt { get; init; }
+    public DateTimeOffset? UpdatedAt { get; init; }
+    public DateTimeOffset? LastOpenedAt { get; init; } // staleness detection
+
+    // Edges
+    public ISet<Guid> NoteIds { get; init; } = new HashSet<Guid>();
+    public ISet<Guid> CalendarEntryIds { get; init; } = new HashSet<Guid>();
+    public ISet<Guid> TaskIds { get; init; } = new HashSet<Guid>();
     
-    public IDictionary<Guid, AccessLevel> AccessLevels { get; init; }
-        = new Dictionary<Guid, AccessLevel>();                      // Establish people who can access a project
-    
-    public DateTimeOffset CreationDate { get; init; }
-    public DateTimeOffset LastUpdateDate { get; init; }
-    public DateTimeOffset LastAccessDate { get; init; }             // staleness detection
-    
-    
-    
-    ISet<Guid> Notes { get; init; } = new HashSet<Guid>();          // Project Notes
-    ISet<Guid> Collaborators { get; init; } = new HashSet<Guid>();  // Project Contacts
-    ISet<Guid> CalenderEvents { get; init; } = new HashSet<Guid>(); // Scheudled Events related to a project
-    
-    
+    //todo - figure out Project Storage, Sync, Archive, etc. Link into Git? GitMonitor? idk bruh.
 }
 
 public enum ProjectStatus
 {
+    Planning,
+    Research,
     Active,
     Paused,
-    Archived,
-    Research,
     Blocked,
-    Planning
+    Archived
 }
 
 public enum ProjectVisibility
@@ -53,9 +57,4 @@ public enum AccessLevel
     Owner,
     Editor,
     ReadOnly
-}
-
-public enum ProjectTag
-{
-    
 }

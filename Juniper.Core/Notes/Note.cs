@@ -1,6 +1,8 @@
-﻿namespace Juniper.Core.Notes;
+﻿using Juniper.Core.Tagging;
 
-public sealed record Note
+namespace Juniper.Core.Notes;
+
+public sealed record Note : ITaggable
 {
     public Guid Id { get; init; }
     
@@ -9,6 +11,9 @@ public sealed record Note
 
     public string Title { get; init; } = "";
     public string Markdown { get; init; } = "";
+    
+    // Universal tags
+    public ISet<TagId> TagIds { get; init; } = new HashSet<TagId>();
     
     public IList<NoteAttachment> Attachments { get; init; } = new List<NoteAttachment>();
 }
