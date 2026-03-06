@@ -4,15 +4,15 @@ namespace Juniper.Core.Tasks;
 
 public interface IJTaskStore
 {
-    JTask? Get(Guid id);
+    Task<JTask?> GetAsync(Guid id);
 
     // Query
-    IReadOnlyList<JTask> Query(TaskQuery query);
+    Task<IReadOnlyList<JTask>> QueryAsync(TaskQuery query);
 
     // CRUD
-    bool Insert(JTask jTask);
-    bool Update(JTask jTask);
-    bool Delete(Guid id);
+    Task InsertAsync(JTask jTask);
+    Task UpdateAsync(JTask jTask);
+    Task DeleteAsync(Guid taskId);
 }
 
 public sealed record TaskQuery

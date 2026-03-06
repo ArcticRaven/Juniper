@@ -2,20 +2,28 @@
 
 public interface ITagStore
 {
-    Tag? Get(TagId id);
+    Task<Tag?> GetAsync(TagId id);
 
     // Tag queries
-    IEnumerable<Tag> SearchByName(string query);
+    Task<IReadOnlyList<Tag>> SearchByNameAsync(string query);
+    Task<IReadOnlyList<Tag>> QueryAsync(TagQuery query);
 
     // Category queries
-    
-    // todo - Fuzzy Matching~~ 
-    IEnumerable<Tag> GetByCategory(string category);
-    IEnumerable<string> GetCategories();
+    Task<IReadOnlyList<Tag>> GetByCategoryAsync(string category);
+    Task<IReadOnlyList<string>> GetCategoriesAsync();
 
-    // meow
-    Tag Create(string name, string? hexColor = null, string? category = null);
-    void Upsert(Tag tag);
+    // CRUD-ish
+    Task<Tag> CreateAsync(string name, string? hexColor = null, string? category = null);
+    Task UpsertAsync(Tag tag);
 
-    Tag GetOrCreate(string name, string? hexColor = null, string? category = null);
+    Task<Tag> GetOrCreateAsync(string name, string? hexColor = null, string? category = null);
+}
+
+public sealed record TagQuery
+{
+    public string? Name { get; init; }
+    public string? Category { get; init; }
+
+    public int? Limit { get; init; }
+    public int? Offset { get; init; }
 }
