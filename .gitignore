@@ -12,6 +12,9 @@ obj/
 *.userosscache
 *.sln.docstates
 
+# Docs
+*.docx 
+
 # NuGet
 *.nupkg
 *.snupkg
